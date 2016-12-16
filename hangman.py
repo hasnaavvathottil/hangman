@@ -8,28 +8,27 @@ def select_word(fname="/usr/share/dict/words"):
 			if i.isalpha() and i.islower() and len(i) > 6 :
 				words.append(i)
 	return random.choice(words)
-def check_letter(x,word):
+
+def check_letter_exist(x,word):
 	if x in word:
 		return True
 	else:
 		return False
-def wrong_exist(x,wrongs):
-	if x in wrongs:
-		return True
-	else:
-		return False
+
 def replace_letters(word, correctGuesses):
-	letters = "abcdefghijklmnopqrstuvwxyz"
-	hiddenLetters = set(letters)-set(correctGuesses)
-	for i in hiddenLetters:
-		if i in word:
-			word = word.replace(i, '*')
-	return word
+	x = ""
+	for i in word:
+		if i in correctGuesses:
+			x = x.append(i)
+		else:
+			x = x.append('*')
+
 def check_word_found(word):
 	if '*' in word:
 		return False
 	else:
 		return True
+		
 def main():
 	word = select_word() 
 	chance = 10
@@ -48,11 +47,11 @@ def main():
 				break
 			else:
 				print 'Please enter only one character'
-		if check_letter(userInput, word):
+		if check_letter_exist(userInput, word):
 			correctGuesses.append(userInput)
 			print "secret word contains %r" %(userInput)
 		else:
-			if wrong_exist(userInput,wrongGuesses):
+			if check_letter_exist(userInput,wrongGuesses):
 				print "You already tried %r"%(userInput)
 			else:
 				chance -= 1
