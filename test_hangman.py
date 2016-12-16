@@ -20,3 +20,18 @@ def test_select_word_select_good():
 
     assert word == 'testabcdas'
 
+def test_check_letter_exist_good():
+    word = "word"
+    x = "d"
+    result = hangman.check_letter(x,word)
+    assert result == True 
+
+def test_check_letter_exist_bad():
+    word = "word"
+    x = "m"
+    result = hangman.check_letter(x,word)
+    assert result == False 
+
+
+    
+    
