@@ -17,11 +17,13 @@ def check_letter_exist(x,word):
 
 def replace_letters(word, correctGuesses):
 	x = ""
-	for i in word:
-		if i in correctGuesses:
-			x = x.append(i)
-		else:
-			x = x.append('*')
+	if word!="":
+		for i in word:
+			if i in correctGuesses:
+				x = x+i
+			else:
+				x = x+"*"
+	return x
 
 def check_word_found(word):
 	if '*' in word:
@@ -65,4 +67,3 @@ def main():
 		
 if __name__ == '__main__':
    main()
-
